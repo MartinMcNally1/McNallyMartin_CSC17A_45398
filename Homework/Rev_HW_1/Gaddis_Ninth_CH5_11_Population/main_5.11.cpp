@@ -11,16 +11,6 @@
 
 using namespace std;  //Library Scope
 
-//User Libraries
-
-//Global Constants
-
-//Science and Math, Conversions, Higher Dimensions
-
-//const to follow
-
-//Function Prototypes
-
 //Execution Starts Here
 int main(){
     //Set Random Number Seed Here
@@ -29,9 +19,7 @@ int main(){
     int numO=0;       //Starting number of organisms. numO > 2
     float numAPI=0;   //Average population increase, given as a percentage. numAPI > 0
     int numD=0;       //Number of days they will multiply. numD > 1 
-    //Initialize Variables
-    
-    //Map inputs to outputs -> i.e. process the inputs
+ 
     //Input the starting number of organisms
     cout << "Input the starting number of organisms.\n";
     cout << "The number cannot be less then 2.\n";
@@ -42,7 +30,6 @@ int main(){
         cout << "Enter here: ";
         cin >> numO;
     }
-
     //Input the average daily population increase
     cout << "Input the average daily population increase as a percentage.\n";
     cout << "The number cannot be negative.\n";
@@ -53,12 +40,24 @@ int main(){
         cout << "Enter here: ";
         cin >> numAPI;
     }
+    //Input the number of days the population will multiply
+    cout << "Input the number of days the population will multiply.\n";
+    cout << "The number cannot be less then 1.\n";
+    cout << "Enter here: ";
+    cin >> numD;
+    while ( numD < 1){
+        cout << "The number of days cannot be less then 1.\n";
+        cout << "Enter here: ";
+        cin >> numD;
+    }
     //Display the outputs
-    
-    //Clean up - File closing, memory de-allocation, etc....
-
-    //Exit Stage Correctly
-    
+    cout << "Initial population: " << numO << endl;
+    cout << "Average daily population increase: " << numAPI << endl;
+    cout << "Period of days: " << numD << endl;
+    numAPI/=100;    //Turns it into a number from a percentage for math
+    for ( int i=1; i<=numD; i++){
+        cout << setprecision(2) << fixed << "Population on day " << i << ": " << pow(1+numAPI, i) * numO << endl;
+    }
     return 0;
 }
 
