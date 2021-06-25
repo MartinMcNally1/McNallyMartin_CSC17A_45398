@@ -1,12 +1,14 @@
 /*   
  * Author: Martin McNally
- * Purpose: 3.12 problem
- * Date: 06/21/2021
+ * Purpose: Rain or Shine
+ * Date: 06/24/2021
  */
 
 //System Level Libraries
 #include <iostream>   //I/O Library
 #include <cmath>      //Math Library
+#include <iomanip>    //Formating Output
+
 using namespace std;  //Library Scope
 
 //User Libraries
