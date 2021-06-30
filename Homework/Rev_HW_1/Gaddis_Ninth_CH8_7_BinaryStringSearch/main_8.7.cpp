@@ -25,7 +25,7 @@ int main(){
 
     //Declare Variables - Known and Unknown, units, range, description
     const int NUM_NAMES=20;
-    string names[NUM_NAMES]={"Collins, Bill","Smith, Bart","Allen, Jim","Griffin, Jim","Stamey, Marty",
+    char names[NUM_NAMES]={"Collins, Bill","Smith, Bart","Allen, Jim","Griffin, Jim","Stamey, Marty",
                              "Rose, Geri","Taylor, Terri","Johnson, Jill","Allison, Jeff","Looney, Joe",
                              "Wolfe, Bill","James, Jean","Weaver, Jim","Pore, Bob","Rutherford, Greg",
                              "Javens, Renee","Harrison, Rose","Setzer, Cathy","Pike, Gordon","Holland, Beth"};
@@ -44,7 +44,7 @@ int main(){
 }
 
 //Function Implementations
-int BinarySearch(string names[], const int num, string name){
+int BinarySearch(char names[], const int num, char name){
     int first=0, last=num-1, mid, pos=-1;
     bool found=false;
     
