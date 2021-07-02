@@ -19,7 +19,6 @@ using namespace std;
 int  read(char []);
 void sort(char [],int);
 void print(const char [],int);
-void swap(int&, int&);
 
 //Program Execution Begins Here
 int main(int argc, char** argv) {
@@ -71,18 +70,17 @@ void sort(char array[],int size){
                 int temp=array[i];
                 array[i]=array[i+1];
                 array[i+1]=temp;
-//                swap(array[i], array[i+1]);
             }
         }
     }
     
 }
-//Output the sorted array
+//Output the sorted array by, 
 void print(const char array[],int size){
     for (int i=0; i<=size; i++){
         cout << array[i];
-    }
-}
+            }
+        }
 
 //Swap function
 //Remember this for future projects.
