@@ -1,7 +1,7 @@
 /*   
  * Author: Martin McNally
  * Purpose: Converting Celsius to Fahrenheit
- * Date: 06/21/2021
+ * Date: 08/30/2021
  */
 
 //System Level Libraries
@@ -19,15 +19,10 @@ int main(){
     cout << "Enter the Celsius temperature you would like to convert to Fahrenheit below." << endl;
     cout << "Input temperature here: ";
     cin >> C;
-//  if (C == false){
-//        if ( C == false ){
-//            cout << "Only numbers can be entered.\n";
-//            cout << "Try again, input temperature here: ";
-//            cin >> C;
-//        }
-//  }
+
     F=(((9*C)/5)+32); //The conversion from Celsius to Fahrenheit.
-            
+    
+    cout << fixed << setprecision(2) << endl;
     cout << "\nResults: " << C << " degrees centigrade is " << F << " degrees Fahrenheit." << endl; 
     
     return 0;
