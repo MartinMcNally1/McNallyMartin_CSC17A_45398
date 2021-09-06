@@ -23,10 +23,10 @@
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>MartinMcNally_Ninth_CH3_12_Celsius.to.Fahrenheit</itemPath>
+      <itemPath>Gaddis_Ninth_CH3_13_TempConvrt</itemPath>
     </logicalFolder>
   </logicalFolder>
-  <projectmakefile>MartinMcNally_Ninth_CH3_12_Celsius.to.Fahrenheit</projectmakefile>
+  <projectmakefile>Gaddis_Ninth_CH3_13_TempConvrt</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>

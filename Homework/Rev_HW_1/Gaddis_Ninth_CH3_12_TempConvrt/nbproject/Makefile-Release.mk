@@ -23,12 +23,12 @@ AS=as
 # Macros
 CND_PLATFORM=Cygwin-Windows
 CND_DLIB_EXT=dll
-CND_CONF=Debug
+CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
 # Include project Makefile
-include MartinMcNally_Ninth_CH3_12_Celsius.to.Fahrenheit
+include Gaddis_Ninth_CH3_13_TempConvrt
 
 # Object Directory
 OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -56,16 +56,16 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/martinmcnally_ninth_ch3_12_celsius.to.fahrenheit.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gaddis_ninth_ch3_12_tempconvrt.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/martinmcnally_ninth_ch3_12_celsius.to.fahrenheit.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gaddis_ninth_ch3_12_tempconvrt.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/martinmcnally_ninth_ch3_12_celsius.to.fahrenheit ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gaddis_ninth_ch3_12_tempconvrt ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/main_3.12.o: main_3.12.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_3.12.o main_3.12.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_3.12.o main_3.12.cpp
 
 # Subprojects
 .build-subprojects:

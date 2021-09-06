@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=martinmcnally_ninth_ch3_12_celsius.to.fahrenheit
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/martinmcnally_ninth_ch3_12_celsius.to.fahrenheit
+CND_ARTIFACT_NAME_Debug=gaddis_ninth_ch3_12_tempconvrt
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/gaddis_ninth_ch3_12_tempconvrt
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=martinmcnallyninthch312celsius.to.fahrenheit.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/martinmcnallyninthch312celsius.to.fahrenheit.tar
+CND_PACKAGE_NAME_Debug=gaddisninthch312tempconvrt.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/gaddisninthch312tempconvrt.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=martinmcnally_ninth_ch3_12_celsius.to.fahrenheit
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/martinmcnally_ninth_ch3_12_celsius.to.fahrenheit
+CND_ARTIFACT_NAME_Release=gaddis_ninth_ch3_12_tempconvrt
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/gaddis_ninth_ch3_12_tempconvrt
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=martinmcnallyninthch312celsius.to.fahrenheit.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/martinmcnallyninthch312celsius.to.fahrenheit.tar
+CND_PACKAGE_NAME_Release=gaddisninthch312tempconvrt.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/gaddisninthch312tempconvrt.tar
 #
 # include compiler specific variables
 #
