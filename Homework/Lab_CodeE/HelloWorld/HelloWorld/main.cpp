@@ -1,8 +1,3 @@
-/* 
- * Author: 
- * Date:
- * Purpose:
- */
 
 //System Libraries Here
 #include <iostream>
