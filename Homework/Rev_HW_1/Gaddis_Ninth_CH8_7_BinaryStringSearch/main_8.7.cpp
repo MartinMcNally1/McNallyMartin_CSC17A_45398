@@ -6,7 +6,7 @@
 
 //System Level Libraries
 #include <iostream>   //I/O Library
-#include <string>   
+#include <string>     //String Library 
 using namespace std;  //Library Scope
 
 //User Libraries
@@ -18,7 +18,11 @@ using namespace std;  //Library Scope
 //const to follow
 
 //Function Prototypes
-int BinarySearch(string[], const int, string);
+void BubbleSort(char[], const int);
+void SelectionSort(char[], const int);
+void linearSearch(char[], const int);
+MarkSort(char [], const int)
+int BinarySearch(char[], const int);
 //Execution Starts Here
 int main(){
     //Set Random Number Seed Here
@@ -43,17 +47,6 @@ int main(){
     return 0;
 }
 
-//Function Implementations
-int BinarySearch(char names[], const int num, char name){
-    int first=0, last=num-1, mid, pos=-1;
-    bool found=false;
-    
-    while (!found && first <= last ){
-        mid=(first+last)/2;
-        if (names[mid]==names){
-            found=true;
-            pos=mid;
-        }
-        else if (names[mid]>)
-    }
-}
+//Function
+
+void SelectionSort(char names[])
