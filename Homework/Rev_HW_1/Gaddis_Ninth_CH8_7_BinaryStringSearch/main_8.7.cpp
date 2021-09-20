@@ -1,7 +1,7 @@
 /*   
  * Author: Martin McNally
  * Purpose:  
- * Date: 06/21/2021
+ * Date: 09/19/2021
  */
 
 //System Level Libraries
@@ -18,10 +18,7 @@ using namespace std;  //Library Scope
 //const to follow
 
 //Function Prototypes
-void BubbleSort(char[], const int);
-void SelectionSort(char[], const int);
-void linearSearch(char[], const int);
-MarkSort(char [], const int)
+
 int BinarySearch(char[], const int);
 //Execution Starts Here
 int main(){

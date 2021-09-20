@@ -32,7 +32,7 @@ int main(){
     //Initialize Variables
     fillArray(array, size);     //Calls fillArray function
     printArray(array, size);    //Outputs array contents
-    
+   
     //  Sort Array
     //BubbleSort(array,size);   //Calls Bubble Sort Algorithm
     SelectionSort(array, size); //Calls Selection Sort Algorithm
@@ -58,9 +58,10 @@ void fillArray(int array[], int size){  //Fills Array with a random numbers
 void printArray(int array[], int size){   //Outputs Array contents
     int index=0;
     while(index<size){
-        cout << setw(3) << array[index]; //Outputs each element
-        if (index != 0 && index%10==0){    //If index mod 5 equals 0(divisible by 5) AND if index equals 0
+        if ( index != 0 && index%10==0){    //If index mod 5 equals 0(divisible by 5) AND if index equals 0
             cout << endl;
+        }else{
+            cout << setw(3) << array[index]; //Outputs each element
         }
         index++;
     }
