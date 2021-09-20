@@ -1,12 +1,15 @@
 /*   
  * Author: Martin McNally
- * Purpose: 
+ * Purpose: Template
  * Date: 
  */
 
 //System Level Libraries
-#include <iostream>   //I/O Library
+#include <iostream>   //Input/Output Library
 #include <cmath>      //Math Library
+#include <ctime>      //Time library
+#include <iomanip>    //Output Manipulation library
+#include <cstlib>     //
 using namespace std;  //Library Scope
 
 //User Libraries
