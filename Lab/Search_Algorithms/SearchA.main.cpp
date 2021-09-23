@@ -99,7 +99,7 @@ void LinearSearchPosition( const int array[], int size, int value){    //Looks f
     for (int i=0; i<size; i++){ //Passes through the whole array
         if(value==array[i]){    //If array[i] is EQUAL to value searched
             cout << i+1 << ", ";
-            index++;            //Increment index by 1
+            //index++;            //Increment index by 1
         }   
     }
 

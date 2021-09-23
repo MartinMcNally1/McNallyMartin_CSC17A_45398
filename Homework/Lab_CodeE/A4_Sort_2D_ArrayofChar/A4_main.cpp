@@ -70,28 +70,18 @@ int read(char arr[][COLMAX],int &rowDet){   //Outputs row and columns detected f
     rowDet=maxR;
     return maxC;   //Numer of colums(numbr of digits/character)
 }
-void sort(char array[][COLMAX],int row,int col){ //Sort by row
-    int max=0;    //Max elements in subscript
-    int i=0;      //Index for counting
-    for (int r=0; r<=row; r++){     //Starts from row 0 and continues 
-        for (max=col-1; max>0; max--){  //Selection Sort, compareing first with Last, last+1, etc.
-            for (i=0; i<max; i++){
-                if (array[i][r] > array[i+1][r]){  
-                    char temp=array[i][r];
-                    array[i][r]=array[i+1][r];
-                    array[i+1][r]=temp;
-                }
+void sort(char array[][COLMAX],int row,int col){ //
+    for ( int i=0; i<row; i++){
+        for (int ii=i+1; ii<row; ii++){
+            if (strcmp(array[i],array[ii]) > 0){
+                swap (array[i],array[ii]);
             }
         }
     }
+    
 }
 void print(const char array[][COLMAX],int row, int col){  //Print the sorted 2-D array
-    for (int r=0; r<row; r++){
-        for (int c=0; c<col; c++){
-            cout << array[r][c];
-            if (c==col-1){
-                cout << endl;
-            }
-        }
+    for (int i=0; i<row; i++){
+    cout << array[i] << endl;
     }
 } 
