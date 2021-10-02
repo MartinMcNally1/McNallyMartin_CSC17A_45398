@@ -94,9 +94,6 @@ void print(const int pos[]){    //Print the array of indexes where the pattern f
     if ( pos[0] == -1 ){
         cout << "None" << endl;
     }
-    else if ( size == 1){
-        cout << pos[0] << endl;
-    }
     else{
         for( int i=0; i<size; i++){
         cout << pos[i] << endl;

@@ -23,10 +23,10 @@
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>Test</itemPath>
+      <itemPath>CPP_Template</itemPath>
     </logicalFolder>
   </logicalFolder>
-  <projectmakefile>Test</projectmakefile>
+  <projectmakefile>CPP_Template</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
