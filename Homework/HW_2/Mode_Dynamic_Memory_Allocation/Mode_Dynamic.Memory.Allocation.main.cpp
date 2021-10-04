@@ -1,7 +1,8 @@
 /* 
  * File:   main.cpp
- * Author: Dr. Mark E. Lehr
+ * Author: Dr. Mark E. Lehr, Martin McNally
  * Created on March 6th, 2019, 7:45 PM
+ * Completed: October 3, 2021
  */
 
 //Libraries
@@ -48,8 +49,8 @@ int main(int argc, char*argv[]) {
     shuffle(ary,arySize,7);
     
     //Calculate the mode array
-    int *modeAry=mode(ary,arySize); //int* ary has been shuffle, we dont care about it
-                                    //int* modeAry is out focus. We want it to store int* modeAry={Number of modes, Frequency of Modes, Mode 1, Mode 2....};
+    int *modeAry=mode(ary,arySize);
+    
     //Print the initial array
     cout<<"The Array after shuffling"<<endl;
     prntAry(ary,arySize,modNum);
@@ -79,7 +80,7 @@ int *copy(const int *a,int n){
 
 void prntMod(int *ary){
     cout<<"The number of modes = "<<
-            ary[0]<<endl;   
+            ary[0]<<endl;
     cout<<"The max Frequency = "<<
             ary[1]<<endl;
     if(ary[0]==0){
@@ -90,7 +91,7 @@ void prntMod(int *ary){
     for(int i=2;i<ary[0]+1;i++){
         cout<<ary[i]<<",";
     }
-    cout<<ary[ary[0]+1]<<"}"<<endl; //What does this print
+    cout<<ary[ary[0]+1]<<"}"<<endl;
 }
 
 void mrkSort(int *array,int n){
@@ -99,16 +100,14 @@ void mrkSort(int *array,int n){
     }
 }
 
-void minPos(int *array,int n,int pos){  //Passing a dereferenced pointer into a function
-                                        //Allowing the function to pull the variables where array point to at index pos
-                                        //REMEMEBER: array[pod] = 'variable at index pos' <=> *(array+pos)= 'variable at index pos' 
+void minPos(int *array,int n,int pos){
     for(int i=pos+1;i<n;i++){
-        if(*(array+pos)>*(array+i)) 
+        if(*(array+pos)>*(array+i))
             swap(array+pos,array+i);
     }
 }
 
-void swap(int *a,int *b){   //Each pointer is dereferenced, so its swapping the variables where pointers *a and *b point to in memory
+void swap(int *a,int *b){
     //Swap in place
     *a=*a^*b;
     *b=*a^*b;
@@ -118,8 +117,8 @@ void swap(int *a,int *b){   //Each pointer is dereferenced, so its swapping the 
 void prntAry(int *array,int n,int perLine){
     //Output the array
     for(int i=0;i<n;i++){
-        cout<<*(array+i)<<" ";  //*(array+i) is a dereferenced pointer array at index i so we can print 
-        if(i%perLine==(perLine-1))cout<<endl;   //Ends line at the desired number of integers printed(rememember this code)
+        cout<<*(array+i)<<" ";
+        if(i%perLine==(perLine-1))cout<<endl;
     }
     cout<<endl;
 }
@@ -130,8 +129,7 @@ int *fillAry(int n, int modNum){
     
     //Fill the array with 2 digit numbers
     for(int i=0;i<n;i++){
-        *(array+i)=i%modNum;    //*(array+1) dereferences the pointer array at index i 
-                                //so it can be assigned and hold the integer i%modNum in said index
+        *(array+i)=i%modNum;
         //*(array+i)=rand()%modNum;
     }
     
@@ -139,9 +137,7 @@ int *fillAry(int n, int modNum){
     return array;
 }
 
-void shuffle(int *a,int n,int nShuf){   //int a is dereferenced, so we are using the data to which a is pointing too
-                                        //int n is
-                                        //int nShif is
+void shuffle(int *a,int n,int nShuf){
     unsigned int temp;
     for(int shuf=1;shuf<=nShuf;shuf++){
         for(int i=0;i<n;i++){
@@ -176,26 +172,55 @@ void GR(unsigned int& value){
 int *mode(const int *array,int arySize){
     //Copy the array
     int *ary=copy(array,arySize);
-    //Sort the copy
     mrkSort(ary,arySize);
     //Find the max Frequency
-    int maxF=0;
-    for (int i=0; i< arySize; i++){
-        if (*(ary+i)==*(ary+i+1)){
-           
-        }                       //n=n>m?n:m
-    }
-    //Find the number of modes
-    
-    //Allocate the mode array
-    //Again this is just a stub.
+    int maxCount = 0;
+    int count = 1;
+    int temp = 1;
+    int numModes = 0;
     int nmodes=0;
     int *modeAry=new int[nmodes+2];
-    modeAry[0]=0;//Stub returns no modes
-    modeAry[1]=1;//Stub returns Frequency 1
     
-    
-    //Fill the mode array
+    for (int i = 1; i < arySize; i++) {
+        if (ary[i] == ary[i - 1]) {
+            count++;
+        }
+        else {
+            if (count > maxCount) {
+                maxCount = count;
+            }
+            if(temp < count) {
+                temp = count;
+            }
+            if(count == 1 && temp == 1) {
+                numModes == numModes;
+            } 
+            else if(count == temp) {
+                numModes++;
+            }
+        count = 1;
+        }
+    }
+    //Allocate the mode array
+    int modeCount = 1;
+    int indx=0;
+    for(int i=0;i<arySize;i++){
+        if(ary[i]==ary[i-1]){
+            modeCount++;
+        }
+        else if (ary[i]!=ary[i-1]){
+            modeCount=1;
+        }
+        if(modeCount==maxCount){
+            modeAry[indx+2]=ary[i];
+            indx++;
+        }
+    }
+    if(modeCount==0){
+        modeAry[indx+2]=NULL;
+    }
+    modeAry[0]=numModes;//Stub returns no modes
+    modeAry[1]=temp;//Stub returns Frequency 1
 
     //Delete the allocated copy and return
     delete []ary;

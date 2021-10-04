@@ -24,6 +24,8 @@ void Basic_Pointers();
 void Pointer_Arrays();
 void Print_Arrays(int*, int);
 int *ReturnPointerArywithCount(int &);
+int **Dynamic_2D_Arrays(int &, int &);
+void DELETE_2D_MEMORY_CRITICAL( int**, int, int);
 void DELETE_MEMORY_CRITICAL( int*);
 
 //Code Begins Execution Here with function main
@@ -120,4 +122,37 @@ int* ReturnPointerArywithCount( int &count){ //Returns a integer pointer array w
     }
     return ptr;                  //Returns ptr
                                  //Note: No need for * in front of Pointer name
+}
+
+int **Dynamic_2D_Arrays(int &rows, int &cols){
+    int rows, cols;
+    cin>>rows>>cols;
+    
+    //Step 1
+    int **ptr2D = new int *[rows];  //Allocate memory to the pointer-pointer 
+    //Step 2
+    for (int i=0; i<rows; i++){     //Allocates memory to to each pointer the pointer points to
+        ptr2D[i]= new int[cols];
+    }
+    //Step 1 and 2 Allocate and initialize the 2D dynamic array for use. 
+    //Remember to delete it all
+    
+    for(int r=0; r<rows; r++){
+        for (int c=0; c<cols; c++){
+            cin >> ptr2D[r][c];
+        }
+    }
+    
+    return ptr2D; 
+}
+
+void DELETE_2D_MEMORY_CRITICAL( int **ptr, int rows, int cols){ //Dealloacte dynamic memory from back to forward to avoid deleting the address to memory
+    //Deallocate Step 2
+    for (int i=0; i<cols; i++){
+        delete[] ptr[i];
+    }
+    //Deallocate Step 1
+    delete[] ptr;
+    
+    ptr=nullptr;    //pointer points to nothing
 }

@@ -90,7 +90,7 @@ void SelectionSort(int array[], int size){  //Plus upgrades from  Prof. Lehr
         int SmallestI=index;    //Assigns index of first array to compare to see if it is the smallest 
         for ( int i=index+1; i<size; i++){ //Compares Smallest index with the rest of the array variables 
                                            //We index+1 because we don't want to compare the same array at the same index
-            if (array[SmallestI]>array[i]){ //If the element is array[SmallestI] is greater then array[i]
+            if (array[SmallestI]>array[i]){ //If the element in array[SmallestI] is greater then array[i]
                 SmallestI=i;    //Store the index for smallest element in array
             }
         }//Now that we know where the smallest element is of the array, we swap them

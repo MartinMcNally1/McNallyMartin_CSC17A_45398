@@ -1,12 +1,3 @@
-/* 
- * File:   Median_Dynamic.Memory.Allocation.main.cpp
- * Author: Martin McNally
- * Created: Oct 2, 2021
- * Purpose: Find the Median of a 1D pointer array
- *          and output accordingly 
- */
-
-
 #include <iostream>
 #include <iomanip>
 
@@ -22,15 +13,15 @@ void prntMed(float *);     //Print the median Array
 int main(){
     
     int size=0;
-    int *ptr = getData(size);   //Fills in 1D pointer array, returns pointer with size of pointer
-    float *ptrMed=median(ptr,size); //Finds median, size of float pointer array and copies integer array in correct order
+    int *ptr = getData(size);
+    float *ptrMed=median(ptr,size);
 	
-	prntDat(ptr,size);  //Prints pointer array
-	prntMed(ptrMed);    //Prints float array
+	prntDat(ptr,size);
+	prntMed(ptrMed);
 	
 	
-	delete[] ptr;       //Deallocate  ptr   
-	delete[] ptrMed;    //Deallocate  ptrMed
+	delete[] ptr;
+	delete[] ptrMed;
 	return 0;
 }
 
@@ -63,7 +54,7 @@ float *median(int *ary, int size){  //Fill the median Array with the Float array
     for (int i=0; i<size; i++){
         *(med+(i+2)) = *(ary+i);
     }
-    return med;
+    return med; //Return the float pointer
 }
 void prntMed(float *ptrM){  //Print the median Array
     cout << *(ptrM+0);
