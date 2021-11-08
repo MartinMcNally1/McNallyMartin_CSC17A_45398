@@ -102,19 +102,19 @@ NewBudget getBudget(){  //Monthly Budget
     cout << endl;
     
     cout << "Enter insurance cost for the month:$";
-    cin >>temp.house;
+    cin >>temp.insur;
+    cout << endl;
+    
+    cout << "Enter entertainment cost for the month:$";
+    cin >> temp.ent;
     cout << endl;
     
     cout << "Enter clothing cost for the month:$";
-    cin >> temp.util;
-    cout << endl;
-    
-    cout << "Enter clothing cost for the month:$";
-    cin >> temp.house;
+    cin >> temp.cloths;
     cout << endl;
     
     cout << "Enter miscellaneous cost for the month:$";
-    cin >> temp.util;
+    cin >> temp.mis;
     cout << endl;
     
     return temp;
@@ -198,7 +198,7 @@ void ReportB(FixedBudget budget, NewBudget newbud){   //Compare and report budge
        cout << "Clothing Even" << endl; 
     }
     else if ( newbud.cloths < budget.cloths){
-        cout << "Clothiing Under"<< endl;
+        cout << "Clothing Under"<< endl;
     }
     else{ cout << "Clothing Over" << endl;}
     

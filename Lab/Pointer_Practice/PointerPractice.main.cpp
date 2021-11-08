@@ -48,9 +48,10 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-void DELETE_MEMORY_CRITICAL( int* pointer ){
+void DELETE_MEMORY_CRITICAL( int* pointer ){    //Deletes/Deallocates memory
     delete[] pointer;
     cout << endl << "Memory allocated to pointer at address " << pointer << " is deleted" << endl;
+    pointer = nullptr; //Pointer Address is empty(points at 0)
 }
 
 void Basic_Pointers(){

@@ -55,8 +55,8 @@ void PrintStructVar(VideoGame);    //When passing a structure into a function, i
 void InputStructVar(VideoGame&);   //Void Function that fills in members of structure variable 
 void PrintVideoGameStruct(VideoGame, VideoGame ,VideoGame); //Passes 3 VideoGame Struct's into a fucntion
 
-void InputStructAry(BookInfo&, int);
-void PrintStructAry(BookInfo, int);
+void InputStructAry(BookInfo[], int);
+void PrintStructAry(BookInfo[], int);
 //Code Begins Execution Here with function main
 int main(int argc, char** argv) {
     //Set random number seed once here
@@ -69,13 +69,12 @@ int main(int argc, char** argv) {
     
     //PrintVideoGameStruct(game1, game2, game3); //Calls InputStructVar and PrintStructVar in one function call;
     
-    int SIZE=5;
+    int SIZE=2;
     BookInfo book[SIZE];  //Declared a struct array with 5 elements
     
-    //InputStructAry(book,SIZE);
-    Budget newBud;
-    cout << newBud.cloths << endl;
-            
+    InputStructAry(book,SIZE);
+    PrintStructAry(book,SIZE);
+
     return 0;
 }
 void PrintVideoGameStruct( VideoGame game1, VideoGame game2, VideoGame game3){
@@ -112,23 +111,23 @@ void InputStructVar( VideoGame &game){ //Pass in an initialized Struct variable,
     cin >> game.revscore;
 }
 
-//void InputStructAry( BookInfo &b[], int SIZE){
-//    for (int i=0; i<SIZE; i++){
-//       cout << "    Input info for Book " << i+1 <<endl;
-//       cout << "Enter title: ";
-//       cin.ignore();    //to skip any '\n' characters(spaces)
-//       getline(cin, b[i].title );  //May skip first input, ticker a bit
-//       cout << "Enter Author: ";
-//       cin.ignore();    //to skip any '\n' characters(spaces)
-//       getline(cin, b[i].author );  //May skip first input, ticker a bit
-//       cout << "Enter Release Date: ";
-//       cin >> b[i].release;
-//    }
-//}
-//void PrintStructAry(BookInfo b[], int SIZE ){
-//    for (int i=0; i<SIZE; i++){
-//        cout << "Title of Book " << i+1 << ": " << b[i].title << endl;
-//        cout << "Author of Book " << i+1 << ": " << b[i].author << endl;
-//        cout << "Release Date of Book " << i+1 << ": " << b[i].release << endl << endl;
-//    }
-//}    
+void InputStructAry( BookInfo b[], int SIZE){
+    for (int i=0; i<SIZE; i++){
+       cout << "    Input info for Book " << i+1 <<endl;
+       cout << "Enter title: ";
+       //cin.ignore();    //to skip any '\n' characters(spaces)
+       getline(cin, b[i].title );  //May skip first input, ticker a bit
+       cout << "Enter Author: ";
+       //cin.ignore();    //to skip any '\n' characters(spaces)
+       getline(cin, b[i].author );  //May skip first input, ticker a bit
+       cout << "Enter Release Date: ";
+       cin >> b[i].release;
+    }
+}
+void PrintStructAry(BookInfo b[], int SIZE ){
+    for (int i=0; i<SIZE; i++){
+        cout << "Title of Book " << i+1 << ": " << b[i].title << endl;
+        cout << "Author of Book " << i+1 << ": " << b[i].author << endl;
+        cout << "Release Date of Book " << i+1 << ": " << b[i].release << endl << endl;
+    }
+}    
