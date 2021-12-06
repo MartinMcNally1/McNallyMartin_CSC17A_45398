@@ -7,7 +7,7 @@
  *          Then the player gets another face card, the the dealer gets 
  *          one faced down.
  *Rules:    - Don't go over 21, if you do you bust(includes dealer)
- *          - Dealer gets on face up card, then one face down card.
+ *          - Dealer gets one face up card, then one face down card.
  *          All other players get face up cards
  *          - Player should have the option, when available, to 
  *          Double-Down or Split Pairs (maybe insurance if possible)
@@ -17,12 +17,11 @@
  *          continues after the first 2 cards are given. The typical 
  *          rounds of betting continue.
  * 
- *Version 1 is still missing
- *  -   ACE number check, whether to apply 11 or 1 to player hand and hand value
- *  -   Detection and option, for player, to Double Down
- *  -   Detection and option, for player, to Split Pairs
- *  -   Player Balance check
- *  -   Project one Requirements, check list
+ *Version 1:
+ *  -   ACE card only adds, but if hand busts the value is reduced by 10
+ *  -   Check for Natural 21, for immediate win for player
+ *  -   Check for Bust from player and dealer
+ *  -   Player Balance check for more betting, and if player is out of money 
  */         
 
 //System Libraries
@@ -37,12 +36,20 @@
 using namespace std;  //STD Name-space where Library is compiled
 
 //User Libraries
+struct PlrInfo{ //Include this in next version
+    string id;
+    int balance;
+};
 struct Info         //Struct Info holds player info
 {    
     string hand="";    //Hand accumulated during game, resets each new game
     bool ace=false;    //Notes whether you have an ace in your hand, changes stuff for hand value
     int handV;         //Value of the cards combined, resets each new game
     int balance=0;     //Balance of player, if player reaches 0, he has bust and is ejected
+};
+struct House{
+    string houseH;
+    int houseV;
 };
 //Global Constants not Variables
 const char card[]={'2','3','4','5','6','7','8','9','1','J','Q','K', 'A'};   //These are all the cards being given out, ACE if only valued at 1 for now
@@ -55,10 +62,11 @@ void GetBank(Info&);  //Gets the amount the player wants to play with
     //Player Fucntions
 //void Player(Info);    //Player loop on how he/she wants to play
 void plrHit(Info&);   //Adds a random card to hand, and adds value of said card to handV
-bool Bust(Info);      //Check players hand for 21
+bool Bust(Info);      //Check players hand for 21           //Can include all flags in struct for simplicity
 bool Nat21(Info);     //Check players hand for a bust
+void AceChk(Info&);    //If the player bust but has a 21 card, minus 10
 
-    //Dealer fucntions
+    //Dealer functions
 void dlrHit(string&, int&); //Adds another card to dealer hand, handV
 bool Nat21(int);      //Check dealers hand for a bust(over 21)
 bool Bust(int);       //Check dealers hand for 21
@@ -102,7 +110,11 @@ int main(int argc, char** argv) {
         houseH="";      //Reset House hand
         houseV=0;       //Reset House hand value.
         //Check Balance for betting
-        
+        if (player.balance<=0){
+            cout << "You are out of money, cannot bet.\nLeave." << endl;
+            //return 0;
+            break;
+        }
         //Initial bet from player
         cout << "Starting bet: $";
         cin>>plrBet;
@@ -130,9 +142,12 @@ int main(int argc, char** argv) {
             
             //cout << "Hand: " << player.hand << " with a value at " << player.handV << endl;
             //Check for natural 21 for player and Bust
-            nat21=Nat21(player); //Check if the player got a natural 21
-            bust=Bust(player);  //Check if the player has bust
-
+            
+            AceChk(player);         //Checks if the hand has bust and has an ace.
+            nat21=Nat21(player);    //Check if the player got a natural 21
+            bust=Bust(player);      //Check if the player has bust
+            
+            
             //Check for 21 or Bust (later check for the option of splitting pairs and the option for doubling)
             if(nat21==true){    //Check if player hand is 21
                 //cout << "Player wins with 21" << endl;
@@ -164,6 +179,7 @@ int main(int argc, char** argv) {
             }
         }while(plrH==false);
         
+        //These tow if statements only activate if player busts or has a natural 21 due to flags
         if (nat21==true){   //Check for Natural 21 in player hand from flag
             cout << "Player wins $" << plrBet << " with a natural 21 hand of " << player.hand << endl;
             player.balance+=plrBet;
@@ -172,6 +188,7 @@ int main(int argc, char** argv) {
             cout << "Bust, player losses $" << plrBet << " with hand " << houseH << endl;
             player.balance-=plrBet;
         }else{
+            
         //Dealer loop if a natural 21 or bust isn't found
             //Hit until hand value it 17 or less
             while ( houseV < 17){   //If cards value at greater or equal to 17, stay, else loop back
@@ -193,30 +210,37 @@ int main(int argc, char** argv) {
                 cout << "Player wins $" << plrBet << endl;
                 player.balance+=plrBet;
             }
-            if (houseV>player.handV){
+            if (houseV>player.handV && houseV<21){
                 cout << "Dealers hand of " << houseH << "(" << houseV << ")" << " beats player hand of " << player.hand << "("<< player.handV <<")"<<endl;
                 cout << "Player loses $" << plrBet << endl;
-                player.balance+=plrBet;
+                player.balance-=plrBet;
                 // break;
             }
         }
      
         //Check if player money to bet(must be greater than 0)
         //Cash out or bet again?
-        if (player.balance>0){
+        //if (player.balance>0){
             cout << endl << "Player balance: $" << player.balance << endl;
-            cout << "Place another bet or cash out?" << endl;
-            cout << "Enter 1 to bet or 2 to cash out:";
-            cin>>HorS;
-            if(HorS==1){
-                game=false;
+            if (player.balance<=0){
+            cout << "You are out of money, cannot bet.\nLeave." << endl;
+            //return 0;
+            break;
             }
             else{
-                game=true;
+                cout << "Place another bet or cash out?" << endl;
+                cout << "Enter 1 to bet or 2 to cash out:";
+                cin>>HorS;
+                if(HorS==1){
+                    game=false;
+                }
+                else{
+                    game=true;
+                }
             }
-        }else{
-            cout << "Player balance is 0, come back later" << endl;
-        }
+        //}else{
+           // cout << "Player balance is 0, come back later" << endl;
+        //}
         
     }while(game==false);
     
@@ -232,7 +256,20 @@ void GetBank(Info &user){   //Gets the balance of user for betting
     //CREATE A VALIDATION LOOP, NO NUMBER UNDER 0 OR GREATER THAN 10000
     cout << "Enter the your starting balance before betting: $";
     cin>>user.balance;
+    while (user.balance <= 0){
+        cout << "Invalid Input, must enter a number greater than $10." << endl;
+        cout << "Enter again: $";
+        cin>>user.balance;
+    }
  }
+
+void AceChk(Info &player){  //If player has the ace flag true and has bust, minus 10 to hand value
+    if ( player.ace==true && player.handV>21){
+        player.handV-=10;   //This results in turning the value of the Ace to a one
+        player.ace=false;   //Reverts the flag back to false incase the player gets another Ace
+        cout << "(You've bust, so your ace is now valued at 1 making your hand value of " << player.handV << endl;
+    }
+}
 
 bool Nat21(Info player){
     bool temp;
@@ -264,7 +301,13 @@ void plrHit(Info &user){   //Adds another card to the user hand, and adds value 
         user.hand+=card[9];
         user.hand+='0';
         user.handV+=cardV[9];        
-    }else{
+    }
+    if (num==11){
+        user.hand+=card[11];
+        user.handV+=cardV[11];
+        user.ace=true;  //If true, player hand holds an Ace
+    }
+    else{
         user.hand+=card[num];
         user.handV+=cardV[num];
     }
