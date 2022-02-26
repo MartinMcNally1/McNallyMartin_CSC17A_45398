@@ -35,15 +35,48 @@ int main(int argc, char** argv) {
     
     //Declare variables here
     //enum card {ONE, TWO, THREE};
-    TestInfo *info;
-    int size;
+//    TestInfo *info;
+//    int size;
+    //vector<int> test();
+//    int size;
+//    int i=0;
+//    
+//    cout << "Enter the size of vector:";
+//    cin>>size;
+//    vector<int> test(size); //sets the size of vector
+//    cout << "Vector size set to " << test.size() << endl;
+//    cout << "Enter numbers:" << endl;
+//    
+//    for (i=0; i<=size; i++){
+//        cin>>test.at(i);
+//    }
+//    
+//    cout << test.at(0) << endl;
+//    
+//    for (i=size-1; i>=0; i--){
+//        cout << test.at(i) << ",";
+//    }
+//    
+//    vector<char> test(10);
+//    test.at(0)='h';
+//    test.at(1)='i';
+//    
+//    cout << test.at(0) << test.at(1) << test.at(2);
+    
+    int x=4;
+    int y=8;
+    x=y;
+    y=x;
+    x=y;
+    cout << x << y;
     
     
-    info = GetInfo(size);
     
-    PrintInfo(info,size);
-    
-    Delete(info,size);
+//    info = GetInfo(size);
+//    
+//    PrintInfo(info,size);
+//    
+//    Delete(info,size);
 //    
 //    for (int i=0;i<size;i++){
 //        cout << "Enter Name for user " << i+1 << ":";
